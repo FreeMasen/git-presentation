@@ -264,10 +264,13 @@ git commit --fixup $1 &amp;&amp; git rebase -i --autosquash $1~1
 branches it can become very difficult to pull apart the changes. It may be tempting to perform
 <code>git merge &lt;target-base&gt;</code> to pull in all of the commits but this very difficult to unwind after the
 fact. One way to deal with this is to perform a &quot;manual rebase&quot;.</p>
-<p>To start we need to get the list of commits we are looking to rebase, this will assume our target branch is named develop</p>
+<p>To start we need to get the list of commits we are looking to rebase, this will assume our target
+branch is named develop</p>
 <pre><code class="language-shell">git log --pretty=oneline develop..HEAD &gt; cherry-picks
 </code></pre>
-<p>This will add a line to the file ./cherry-picks for each commit that appears in develop but not HEAD. Note: you may need to remove entries from this list especially if you are changing the base branch.</p>
+<p>This will add a line to the file ./cherry-picks for each commit that appears in develop but not
+HEAD. Note: you may need to remove entries from this list especially if you are changing the base
+branch.</p>
 <pre><code class="language-shell"># ./cherry-picks
 ca5eca5eca5eca5eca5eca5eca5eca5eca5eca5e (HEAD -&gt; work-branch) Commit Three
 7ac07ac07ac07ac07ac07ac07ac07ac07ac07ac0 Commit Two
@@ -278,12 +281,14 @@ babebabebabebabebabebabebabebabebabebabe Commit One
 git checkout -
 git reset --hard origin/develop
 </code></pre>
-<p>This will remove all of your changes on your work branch and reset the state to match exactly our target branch. Now we can cherry-pick our commits on top of the base.</p>
+<p>This will remove all of your changes on your work branch and reset the state to match exactly our
+target branch. Now we can cherry-pick our commits on top of the base.</p>
 <pre><code class="language-shell">git cherry-pick babebabeb
 git cherry-pick 7ac07ac07
 git cherry-pick ca5eca5ec
 </code></pre>
-<p>In the event that any of these commits have conflicts, you'll need to deal with the merge conflict and use git cherry-pick --continue before moving on to the next commit.</p>
+<p>In the event that any of these commits have conflicts, you'll need to deal with the merge conflict
+and use git cherry-pick --continue before moving on to the next commit.</p>
 <p>This has essentially performed the work that rebase is supposed to do but manually.</p>
 
                     </main>
