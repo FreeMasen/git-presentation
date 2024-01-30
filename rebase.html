@@ -135,7 +135,10 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="manual-rebase"><a class="header" href="#manual-rebase">Manual Rebase</a></h1>
-<p>Sometimes when attempting to rebase a complicated set of changes, or maybe when switching base branches it can become very difficult to pull apart the changes. One way to deal with this is to perform a &quot;manual rebase&quot;.</p>
+<p>Sometimes when attempting to rebase a complicated set of changes, or maybe when switching base
+branches it can become very difficult to pull apart the changes. It may be tempting to perform
+<code>git merge &lt;target-base&gt;</code> to pull in all of the commits but this very difficult to unwind after the
+fact. One way to deal with this is to perform a &quot;manual rebase&quot;.</p>
 <p>To start we need to get the list of commits we are looking to rebase, this will assume our target branch is named develop</p>
 <pre><code class="language-shell">git log --pretty=oneline develop..HEAD &gt; cherry-picks
 </code></pre>
