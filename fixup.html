@@ -137,21 +137,21 @@
                         <h1 id="fixups"><a class="header" href="#fixups">Fixups</a></h1>
 <p>In a PR review, some feedback about Commit Two requires making some changes. After the changes have been made, we can fixup Commit Two to avoid extra commits. First we need to grab the reference.</p>
 <pre><code class="language-shell">git log
-commit 9f84b446f643b1ad4a37c991c92a17077fc73174
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit fa11fa11fa11fa11fa11fa11fa11fa11fa11fa11
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 15:09:29 2024 -0600
 
     Commit Three
 
 # copy this commit has (or first 7)
-commit a9d3deae015426c83e3fb32911288b56177e5eab
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit facefacefacefacefacefacefacefacefaceface
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 09:44:37 2024 -0600
 
     Commit Two
 
-commit 8a8e3f8335ad4506230afb3e16c44b7db2012870
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit cafecafecafecafecafecafecafecafecafecafe
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Fri Jan 26 15:09:01 2024 -0600
 
     Commit One
@@ -163,26 +163,26 @@ Date:   Fri Jan 26 15:09:01 2024 -0600
 <pre><code class="language-shell">git log
 # the commit message is prefixed with fixup! which is how git figures
 # out where to merge this in the next step
-commit beeffeed6f643b1ad4a37c991c92a17077fc73174
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit beeffeedbeeffeedbeeffeedbeeffeedbeeffeed
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 15:09:29 2024 -0600
 
     fixup! Commit Two
 
-commit 9f84b446f643b1ad4a37c991c92a17077fc73174
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit fa11fa11fa11fa11fa11fa11fa11fa11fa11fa11
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 15:09:29 2024 -0600
 
     Commit Three
 
-commit a9d3deae015426c83e3fb32911288b56177e5eab
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit facefacefacefacefacefacefacefacefaceface
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 09:44:37 2024 -0600
 
     Commit Two
 
-commit 8a8e3f8335ad4506230afb3e16c44b7db2012870
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit cafecafecafecafecafecafecafecafecafecafe
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Fri Jan 26 15:09:01 2024 -0600
 
     Commit One
@@ -193,10 +193,10 @@ git rebase -i --autosquash a9d3dea~1
 
 This will open the text editor you have configured with the key core.editor
 
-pick 8a8e3f833 Commit One
-pick a9d3deae0 Commit Two
-fixup beeffeed6 fixup! Commit Two
-pick 9f84b446f Commit Three
+pick cafecafec Commit One
+pick facefacef Commit Two
+fixup beeffeedb fixup! Commit Two
+pick facefacef Commit Three
 
 # Rebase baseba119..beeffeed6 onto baseba119 (2 commands)
 #
@@ -227,21 +227,21 @@ pick 9f84b446f Commit Three
 </code></pre>
 <p>Now, we have rewritten our git history as if our fixup changes were part of the original set of change.</p>
 <pre><code class="language-shell">git log
-commit 9f84b446f643b1ad4a37c991c92a17077fc73174
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit fa11fa11fa11fa11fa11fa11fa11fa11fa11fa11
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 15:09:29 2024 -0600
 
     Commit Three
 
 # note: this commit hash has changed
-commit aa1b8f64222069483a215c591cbc0501d0c3d03c
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit ba11ba11ba11ba11ba11ba11ba11ba11ba11ba11
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 09:44:37 2024 -0600
 
     Commit Two
 
-commit 8a8e3f8335ad4506230afb3e16c44b7db2012870
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit cafecafecafecafecafecafecafecafecafecafe
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Fri Jan 26 15:09:01 2024 -0600
 
     Commit One

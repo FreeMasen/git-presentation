@@ -144,21 +144,21 @@
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fixups"><a class="header" href="#fixups">Fixups</a></h1>
 <p>In a PR review, some feedback about Commit Two requires making some changes. After the changes have been made, we can fixup Commit Two to avoid extra commits. First we need to grab the reference.</p>
 <pre><code class="language-shell">git log
-commit 9f84b446f643b1ad4a37c991c92a17077fc73174
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit fa11fa11fa11fa11fa11fa11fa11fa11fa11fa11
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 15:09:29 2024 -0600
 
     Commit Three
 
 # copy this commit has (or first 7)
-commit a9d3deae015426c83e3fb32911288b56177e5eab
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit facefacefacefacefacefacefacefacefaceface
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 09:44:37 2024 -0600
 
     Commit Two
 
-commit 8a8e3f8335ad4506230afb3e16c44b7db2012870
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit cafecafecafecafecafecafecafecafecafecafe
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Fri Jan 26 15:09:01 2024 -0600
 
     Commit One
@@ -170,26 +170,26 @@ Date:   Fri Jan 26 15:09:01 2024 -0600
 <pre><code class="language-shell">git log
 # the commit message is prefixed with fixup! which is how git figures
 # out where to merge this in the next step
-commit beeffeed6f643b1ad4a37c991c92a17077fc73174
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit beeffeedbeeffeedbeeffeedbeeffeedbeeffeed
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 15:09:29 2024 -0600
 
     fixup! Commit Two
 
-commit 9f84b446f643b1ad4a37c991c92a17077fc73174
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit fa11fa11fa11fa11fa11fa11fa11fa11fa11fa11
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 15:09:29 2024 -0600
 
     Commit Three
 
-commit a9d3deae015426c83e3fb32911288b56177e5eab
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit facefacefacefacefacefacefacefacefaceface
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 09:44:37 2024 -0600
 
     Commit Two
 
-commit 8a8e3f8335ad4506230afb3e16c44b7db2012870
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit cafecafecafecafecafecafecafecafecafecafe
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Fri Jan 26 15:09:01 2024 -0600
 
     Commit One
@@ -200,10 +200,10 @@ git rebase -i --autosquash a9d3dea~1
 
 This will open the text editor you have configured with the key core.editor
 
-pick 8a8e3f833 Commit One
-pick a9d3deae0 Commit Two
-fixup beeffeed6 fixup! Commit Two
-pick 9f84b446f Commit Three
+pick cafecafec Commit One
+pick facefacef Commit Two
+fixup beeffeedb fixup! Commit Two
+pick facefacef Commit Three
 
 # Rebase baseba119..beeffeed6 onto baseba119 (2 commands)
 #
@@ -234,21 +234,21 @@ pick 9f84b446f Commit Three
 </code></pre>
 <p>Now, we have rewritten our git history as if our fixup changes were part of the original set of change.</p>
 <pre><code class="language-shell">git log
-commit 9f84b446f643b1ad4a37c991c92a17077fc73174
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit fa11fa11fa11fa11fa11fa11fa11fa11fa11fa11
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 15:09:29 2024 -0600
 
     Commit Three
 
 # note: this commit hash has changed
-commit aa1b8f64222069483a215c591cbc0501d0c3d03c
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit ba11ba11ba11ba11ba11ba11ba11ba11ba11ba11
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Mon Jan 29 09:44:37 2024 -0600
 
     Commit Two
 
-commit 8a8e3f8335ad4506230afb3e16c44b7db2012870
-Author: Robert Masen &lt;robert.masen@smartthings.com&gt;
+commit cafecafecafecafecafecafecafecafecafecafe
+Author: Robert Masen &lt;r.f.masen@gmail.com&gt;
 Date:   Fri Jan 26 15:09:01 2024 -0600
 
     Commit One
@@ -266,10 +266,9 @@ git commit --fixup $1 &amp;&amp; git rebase -i --autosquash $1~1
 </code></pre>
 <p>This will add a line to the file ./cherry-picks for each commit that appears in develop but not HEAD. Note: you may need to remove entries from this list especially if you are changing the base branch.</p>
 <pre><code class="language-shell"># ./cherry-picks
-
-44bc2bf108ed37a17d2cc9fb1edecbbd07e124c3 (HEAD -&gt; work-branch) Commit Three
-ede85c0eaa71cd812d5d74dce6f65e96bd822849 Commit Two
-fd998add5e77e0b3a746b620433b179cfe6f2b66 Commit One
+ca5eca5eca5eca5eca5eca5eca5eca5eca5eca5e (HEAD -&gt; work-branch) Commit Three
+7ac07ac07ac07ac07ac07ac07ac07ac07ac07ac0 Commit Two
+babebabebabebabebabebabebabebabebabebabe Commit One
 </code></pre>
 <p>Now we can create a temporary branch to keep these commits around and then reset our branch</p>
 <pre><code class="language-shell">git checkout -b tmp/work-branch
@@ -277,9 +276,9 @@ git checkout -
 git reset --hard origin/develop
 </code></pre>
 <p>This will remove all of your changes on your work branch and reset the state to match exactly our target branch. Now we can cherry-pick our commits on top of the base.</p>
-<pre><code class="language-shell">git cherry-pick fd998add5
-git cherry-pick ede85c0ea
-git cherry-pick 44bc2bf10
+<pre><code class="language-shell">git cherry-pick babebabeb
+git cherry-pick 7ac07ac07
+git cherry-pick ca5eca5ec
 </code></pre>
 <p>In the event that any of these commits have conflicts, you'll need to deal with the merge conflict and use git cherry-pick --continue before moving on to the next commit.</p>
 <p>This has essentially performed the work that rebase is supposed to do but manually.</p>
